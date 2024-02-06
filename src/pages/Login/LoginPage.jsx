@@ -1,26 +1,46 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import axios from 'axios'
 import './Lstyle.css';
+import { Link } from 'react-router-dom';
 
 const Login= () => {
-  const [isLoginForm, setIsLoginForm] = useState(true);
+  // const [isLoginForm, setIsLoginForm] = useState(true);
 
-  const handleFormChange = () => {
-    setIsLoginForm(!isLoginForm);
+  // const handleFormChange = () => {
+  //   setIsLoginForm(!isLoginForm);
   
-  };
-//   const img=[
-//     {
-//    id:1,
-//    img:[frontImg]
+  // };
 
-//   },
-//   {
-//     id:2,
-//     img:[backImg]
- 
-//    }
-// ]
+  const userRef=useRef()
+    const passRef=useRef()
+    
+function Log(){
+    axios
+    .get("http://localhost:5099/api/Users/GetAllUsers")
+    .then((res)=>{
 
+        let isValid=false
+        for(let i=0;i<res.data.length;i++)
+        {
+            if(res.data[i].userName==userRef.current.value && res.data[i].password==passRef.current.value){
+                isValid=true
+                break;
+            }
+            else{
+                isValid=false
+            }
+        }
+        if(isValid){
+                console.log("Success");
+                // router.push("/home")
+        }
+        else{
+            console.log("Failed");
+        }
+
+        
+})
+}
   return (
     
     <div className='contact-page'>
@@ -34,7 +54,7 @@ const Login= () => {
             <div className='container'>
             <div className='containerlog'>
                 <h2 className='text-center mb-5'></h2>
-                <input type="checkbox" id="flip" onChange={handleFormChange} />
+                
      
      <div className="cover">
        <div className="front">
@@ -52,19 +72,21 @@ const Login= () => {
          </div>
        </div>
      </div>
+
+     
      <div className="forms">
        <div className="form-content">
-         <div className={isLoginForm ? "login-form active-form" : "login-form"}>
+         <div >
            <div className="title">Login</div>
            <form action="#">
              <div className="input-boxes">
                <div className="input-box">
                  <i className="fas fa-envelope"></i>
-                 <input type="text" placeholder="Enter your email" required />
+                 <input type="text" placeholder="Username" ref={userRef} required />
                </div>
                <div className="input-box">
                  <i className="fas fa-lock"></i>
-                 <input type="password" placeholder="Enter your password" required />
+                 <input type="password" placeholder="Enter your password" ref={passRef} required />
                </div>
                <div className="text">
                  <a href="#">Forgot password?</a>
@@ -72,11 +94,14 @@ const Login= () => {
                <div className="button input-box">
                  <input type="submit" value="Submit" />
                </div>
-               <div className="text sign-up-text">Don't have an account? <label htmlFor="flip">Sigup now</label></div>
+               <Link to="/studregister">
+               <div className="text ">Don't have an account? <label htmlFor="flip">Sigup now</label></div>
+               </Link>
              </div>
            </form>
          </div>
-         <div className={isLoginForm ? "signup-form" : "signup-form active-form"}>
+
+         {/* <div className={isLoginForm ? "signup-form" : "signup-form active-form"}>
            <div className="title">Signup</div>
            <form action="#">
              <div className="input-boxes">
@@ -98,7 +123,7 @@ const Login= () => {
                <div className="text sign-up-text">Already have an account? <label htmlFor="flip">Login now</label></div>
              </div>
            </form>
-         </div>
+         </div> */}
        </div>
             </div>
         </div>

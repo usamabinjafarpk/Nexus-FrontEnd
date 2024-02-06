@@ -10,11 +10,15 @@ import About from './pages/About/About';
 import Blog from './pages/Blog/Blog';
 import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/LoginPage';
+import YouPage from './pages/StudentDashboard/StudentDashboard';
+import EditProfile from './pages/StudentDashboard/EditProfile';
+import StudRegister from './pages/Register/StudRegister';
+import "bootstrap/dist/css/bootstrap.css"
 
 function App() {
   return (
     <div>
-    <Navbar expand="lg" className='position-absolute w-100'>
+    {/* <Navbar expand="lg" className='position-absolute w-100'>
       <Container>
         <Navbar.Brand>
           <Link to="/" className='navbar-brand d-flex align-items-center'>
@@ -52,6 +56,14 @@ function App() {
       <Route path='/blog' element={<Blog />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/login' element={<Login/>}/>
+    </Routes> */}
+
+    
+    <Routes>
+    <Route path='/login' element={<Login/>}/>
+      <Route path='/studdashboard' element={<YouPage/>}/>
+      <Route path='/editprofile' element={<EditProfile/>}/>
+      <Route path='/studregister' element={<StudRegister/>}/>
     </Routes>
 
     <footer>
