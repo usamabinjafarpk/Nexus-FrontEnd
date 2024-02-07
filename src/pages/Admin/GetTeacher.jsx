@@ -29,6 +29,13 @@ export default function GetTeacher() {
       console.log(res.data);
     })
   }
+  function GetByClass(){
+    axios
+    .get("http://localhost:5099/api/Teacher/byClass/"+clsRef.current.value)
+    .then((res)=>{
+      console.log(res.data);
+    })
+  }
   
   return (
     <div>
@@ -61,6 +68,9 @@ export default function GetTeacher() {
               </td>
               <td>
                 <button onClick={GetBySub}>Get Teacher By Subject</button>
+              </td>
+              <td>
+                <button onClick={GetByClass}>Get Teacher By Subject</button>
               </td>
           </tr>
         </tbody>
