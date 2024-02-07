@@ -15,6 +15,8 @@ import EditProfile from './pages/StudentDashboard/EditProfile';
 import StudRegister from './pages/Register/StudRegister';
 import "bootstrap/dist/css/bootstrap.css"
 import RegSuccess from './pages/Register/RegSuccess';
+import TeacherManagement from './components/TeacherDashboard/TeacherManagement';
+import GetTeacher from './pages/Admin/GetTeacher';
 
 function App() {
   return (
@@ -66,8 +68,10 @@ function App() {
       <Route path='/editprofile' element={<EditProfile/>}/>
       <Route path='/studregister' element={<StudRegister/>}/>
       <Route path='/registersuccess' element={<RegSuccess/>}/>
+      <Route path='/teacherdashboard' element={<TeacherManagement/>}/>
+      <Route path='/getallteacher' element={<GetTeacher/>}/>
     </Routes>
-
+{/* <TeacherManagement/> */}
     <footer>
       <div className='container my-5'>
         <div className='row d-flex justify-content-between align-items-center'>

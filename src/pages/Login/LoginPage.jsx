@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios'
 import './Lstyle.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login= () => {
   // const [isLoginForm, setIsLoginForm] = useState(true);
@@ -13,6 +13,7 @@ const Login= () => {
 
   const userRef=useRef()
     const passRef=useRef()
+    const navigate=useNavigate()
     
 function Log(){
     axios
@@ -24,6 +25,9 @@ function Log(){
         {
             if(res.data[i].userName==userRef.current.value && res.data[i].password==passRef.current.value){
                 isValid=true
+                sessionStorage.setItem("uname",res.data[i].userName)
+                sessionStorage.setItem("uid",res.data[i].userId)
+                sessionStorage.setItem("role",res.data[i].role)
                 break;
             }
             else{
@@ -31,8 +35,13 @@ function Log(){
             }
         }
         if(isValid){
+          let role=sessionStorage.getItem("role")
                 console.log("Success");
-                // router.push("/home")
+                if(role=="student")
+                navigate("/studdashboard")
+                else if(role=="teacher")
+                navigate("/teacherdashboard")
+
         }
         else{
             console.log("Failed");
@@ -78,7 +87,7 @@ function Log(){
        <div className="form-content">
          <div >
            <div className="title">Login</div>
-           <form action="#">
+           {/*<form action="#">*/}
              <div className="input-boxes">
                <div className="input-box">
                  <i className="fas fa-envelope"></i>
@@ -92,13 +101,14 @@ function Log(){
                  <a href="#">Forgot password?</a>
                </div>
                <div className="button input-box">
-                 <input type="submit" value="Submit" />
+                 {/* <input type="submit" value="Submit" /> */}
+                 <button  onClick={Log}>Login</button>
                </div>
                <Link to="/studregister">
                <div className="text ">Don't have an account? <label htmlFor="flip">Sigup now</label></div>
                </Link>
              </div>
-           </form>
+           {/* </form> */}
          </div>
 
          {/* <div className={isLoginForm ? "signup-form" : "signup-form active-form"}>
