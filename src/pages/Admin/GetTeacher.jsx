@@ -23,6 +23,12 @@ export default function GetTeacher() {
       setAll(res.data)
     })
   }
+  function GetBySub(){
+    axios.get("http://localhost:5099/api/Teacher/bySubject/"+subRef.current.value)
+    .then((res)=>{
+      console.log(res.data);
+    })
+  }
   
   return (
     <div>
@@ -52,6 +58,9 @@ export default function GetTeacher() {
               </td>
               <td>
                 <button onClick={GetById}>Get Teacher By Id</button>
+              </td>
+              <td>
+                <button onClick={GetBySub}>Get Teacher By Subject</button>
               </td>
           </tr>
         </tbody>
