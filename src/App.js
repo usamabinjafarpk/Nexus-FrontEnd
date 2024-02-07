@@ -14,6 +14,7 @@ import YouPage from './pages/StudentDashboard/StudentDashboard';
 import EditProfile from './pages/StudentDashboard/EditProfile';
 import StudRegister from './pages/Register/StudRegister';
 import "bootstrap/dist/css/bootstrap.css"
+import RegSuccess from './pages/Register/RegSuccess';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
       <Route path='/studdashboard' element={<YouPage/>}/>
       <Route path='/editprofile' element={<EditProfile/>}/>
       <Route path='/studregister' element={<StudRegister/>}/>
+      <Route path='/registersuccess' element={<RegSuccess/>}/>
     </Routes>
 
     <footer>
