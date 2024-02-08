@@ -50,6 +50,7 @@ export default function Profile() {
                     <td>{teachers.dateOfBirth}</td>
                 </tr>
                 
+
                 
             </tbody>
         </table>
