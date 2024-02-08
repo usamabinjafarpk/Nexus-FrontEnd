@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
+import SideBar from '../../utils/images/sidebar/SideBar'
 
 export default function GetTeacher() {
 
@@ -7,6 +8,7 @@ export default function GetTeacher() {
   const clsRef=useRef()
   const subRef=useRef()
   const [all, setAll] = useState([])
+  const [item,setItem]=useState({})
   function GetAll(){
     axios
     .get("http://localhost:5099/api/Teacher/getAllExistingTeachers")
@@ -20,13 +22,18 @@ export default function GetTeacher() {
     .get("http://localhost:5099/api/Teacher/getTeachersByTheirId/"+idRef.current.value)
     .then((res)=>{
       console.log(res.data);
-      setAll(res.data)
+      console.log(res.data.teacherId);
+      idRef.current.value=res.data.teacherId;
+      clsRef.current.value=res.data.teacherClass;
+      subRef.current=res.data.teacherSubjectTaught;
     })
   }
   function GetBySub(){
     axios.get("http://localhost:5099/api/Teacher/bySubject/"+subRef.current.value)
     .then((res)=>{
       console.log(res.data);
+     
+
     })
   }
   function GetByClass(){
@@ -34,11 +41,13 @@ export default function GetTeacher() {
     .get("http://localhost:5099/api/Teacher/byClass/"+clsRef.current.value)
     .then((res)=>{
       console.log(res.data);
+      setAll(res.data)
     })
   }
   
   return (
     <div>
+      {/* <SideBar/> */}
       <table>
         <tbody>
           <tr>
@@ -70,7 +79,7 @@ export default function GetTeacher() {
                 <button onClick={GetBySub}>Get Teacher By Subject</button>
               </td>
               <td>
-                <button onClick={GetByClass}>Get Teacher By Subject</button>
+                <button onClick={GetByClass}>Get Teacher By Class</button>
               </td>
           </tr>
         </tbody>
@@ -93,7 +102,7 @@ export default function GetTeacher() {
                 {
                   all.map((item)=>{
                     return(
-                      <tr>
+                      <tr key={item.teacherId}>
                         <td>{item.teacherId}</td>
                         <td>{item.teacherFirstName+" "+item.teacherLastName}</td>
                         <td>{item.dateOfBirth}</td>

@@ -17,6 +17,9 @@ import "bootstrap/dist/css/bootstrap.css"
 import RegSuccess from './pages/Register/RegSuccess';
 import TeacherManagement from './components/TeacherDashboard/TeacherManagement';
 import GetTeacher from './pages/Admin/GetTeacher';
+import SideBar from './utils/images/sidebar/SideBar';
+import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
+import TeacherRegister from './pages/Register/TeacherRegister';
 
 function App() {
   return (
@@ -67,10 +70,12 @@ function App() {
       <Route path='/studdashboard' element={<YouPage/>}/>
       <Route path='/editprofile' element={<EditProfile/>}/>
       <Route path='/studregister' element={<StudRegister/>}/>
+      <Route path='/teacherreg' element={<TeacherRegister/>}/>
       <Route path='/registersuccess' element={<RegSuccess/>}/>
-      <Route path='/teacherdashboard' element={<TeacherManagement/>}/>
+      <Route path='/teacherdashboard' element={<TeacherDashboard/>}/>
       <Route path='/getallteacher' element={<GetTeacher/>}/>
     </Routes>
+    {/* <SideBar/> */}
 {/* <TeacherManagement/> */}
     <footer>
       <div className='container my-5'>

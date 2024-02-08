@@ -4437,11 +4437,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Usama\\Nexu SMS\\Nexu SMS.csproj",
+      "projectUniqueName": "C:\\Usama\\Nexus-FrontEnd\\Nexu SMS\\Nexu SMS.csproj",
       "projectName": "Nexu SMS",
-      "projectPath": "C:\\Usama\\Nexu SMS\\Nexu SMS.csproj",
+      "projectPath": "C:\\Usama\\Nexus-FrontEnd\\Nexu SMS\\Nexu SMS.csproj",
       "packagesPath": "C:\\Users\\ubinjafa\\.nuget\\packages\\",
-      "outputPath": "C:\\Usama\\Nexu SMS\\obj\\",
+      "outputPath": "C:\\Usama\\Nexus-FrontEnd\\Nexu SMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ubinjafa\\AppData\\Roaming\\NuGet\\NuGet.Config",

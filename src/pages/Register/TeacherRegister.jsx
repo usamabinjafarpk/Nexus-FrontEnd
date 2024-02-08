@@ -1,35 +1,56 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function StudRegister() {
-    const [id, setId] = useState("")
+export default function TeacherRegister() {
+  const [id, setId] = useState("")
   const [fname, setFname] = useState("")
   const [lname, setLname] = useState("")
   const [email, setEmail] = useState("")
   const [number, setNumber] = useState("")
   const [dob, setDob] = useState("")
   const [std, setStd] = useState("")
-  const [section, setSection] = useState("")
+  const [sub, setSub] = useState("")
   const [gender, setGender] = useState("")
+  const [address,setAddress]=useState("")
+const navigate=useNavigate()
+  
+  
+  function AddTeacher(){
+    if (sessionStorage.getItem("token") != null) {
+        console.log(sessionStorage.getItem("token"));
+        const headers = {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        };
 
-  function Reg(){
-    let reg={
-      id: id,
-  fName: fname,
-  lName: lname,
-  gender:gender,
-  eMail: email,
-  number: number,
-  dob:dob,
-  clss: std,
-  section: section
+        let addteacher={
+        
+            teacherId: id,
+            teacherFirstName: fname,
+            teacherLastName: lname,
+            dateOfBirth: dob,
+            teacherGender: gender,
+            teacherSubjectTaught: sub,
+            teacherEmail: email,
+            teacherPhone: number,
+            teacherAddress: address,
+            teacherClass: std
+          
     }
-    axios.post("http://localhost:5099/api/Student/RegisterStudent",reg)
+   
+
+    axios.post("http://localhost:5099/api/Teacher/AddTeacher",addteacher,{headers})
     .then((response) => {
       console.log(response.data);
       alert("Registration successfully")
     })
     .catch((error) => console.log(error));
+
+    }
+    else {
+        navigate("/login");
+      }
+   
   }
   return (
     <div>
@@ -46,14 +67,14 @@ export default function StudRegister() {
             </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">Student registration</h3>
+                <h3 class="mb-5 text-uppercase">Teacher registration</h3>
 
                 <div class="row">
 
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example9" class="form-control form-control-lg" value={id} onChange={(e)=>setId(e.target.value)}/>
-                  <label class="form-label" for="form3Example9">Student Id</label>
+                  <label class="form-label" for="form3Example9">Teacher Id</label>
                 </div>
 
 
@@ -69,7 +90,10 @@ export default function StudRegister() {
                       <label class="form-label" for="form3Example1n">Last name</label>
                     </div>
                   </div>
-
+                  <div class="form-outline mb-4">
+                  <input type="text" id="form3Example9" class="form-control form-control-lg" value={sub} onChange={(e)=>setSub(e.target.value)}/>
+                  <label class="form-label" for="form3Example9">Subject</label>
+                </div>
                   <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
                    <h6 class="mb-0 me-4">Gender: </h6>
                       <div class="form-check form-check-inline mb-0 me-4">
@@ -110,12 +134,12 @@ export default function StudRegister() {
                   </select>
                 </div>
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example9" class="form-control form-control-lg" value={section} onChange={(e)=>setSection(e.target.value)}/>
-                  <label class="form-label" for="form3Example9">Sectiion</label>
+                  <input type="text" id="form3Example9" class="form-control form-control-lg" value={address} onChange={(e)=>setAddress(e.target.value)}/>
+                  <label class="form-label" for="form3Example9">Address</label>
                 </div>
                 </div>
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-warning btn-lg ms-2" onClick={Reg}>Submit</button>
+                  <button type="button" class="btn btn-warning btn-lg ms-2" onClick={AddTeacher}>Submit</button>
                 </div>
               </div>
             </div>

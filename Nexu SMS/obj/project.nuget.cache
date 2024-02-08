@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gYylO3Ai+a2IEdVnLBvIxOug3zT+1b1ckbcevx0x4br51RrlaMYOM/orXtD1oPX633YWYaFTh8PYHtQF3fxx+g==",
+  "dgSpecHash": "geDQBPs73cn/NVH4Ug5Wlhpi2rdtD4zZyYvu+KUARLRUT8H6JnbkjwyKY4/0XP9AJfNZUvkQYj0IJV1SpvCi9A==",
   "success": true,
-  "projectFilePath": "C:\\Usama\\Nexu SMS\\Nexu SMS.csproj",
+  "projectFilePath": "C:\\Usama\\Nexus-FrontEnd\\Nexu SMS\\Nexu SMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ubinjafa\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ubinjafa\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
