@@ -15,17 +15,17 @@ export default function AddResult() {
        const [examId, setName] = useState("");
        const [studentId, setStd] = useState("");
        const [subjectId, setSection] = useState("");
-       const [mark, setMark] = useState("");
+       const [marks, setMark] = useState("");
        const Add = () => {
-          let marks = {
+          let mark = {
             resultId: resultId,
             examId: examId,
             studentId: studentId,
             subjectId: subjectId,
-            mark:mark,
+            marks:marks,
         };
     axios
-      .post("http://localhost:5099/api/Result/Add_Result", marks)
+      .post("http://localhost:5099/api/Result/Add_Result", mark)
       .then((response) => {
         console.log(response.data);
       })
@@ -59,7 +59,7 @@ export default function AddResult() {
             <tr>
                 <td>Mark </td>
                 {/* <td><input type="text" value={result.marks} onChange={(e)=>(e.target.value)} /></td> */}
-                <td><input type="text" value={mark} onChange={(e)=>setMark(e.target.value)} /></td>
+                <td><input type="text" value={marks} onChange={(e)=>setMark(e.target.value)} /></td>
             </tr>
             <tr>
                 <td><button onClick={Add}>Add</button></td>

@@ -20,6 +20,7 @@ import GetTeacher from './pages/Admin/GetTeacher';
 import SideBar from './utils/images/sidebar/SideBar';
 import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
 import TeacherRegister from './pages/Register/TeacherRegister';
+import ResultDashboard from './pages/ResultDashboard/ResultDashboard';
 
 function App() {
   return (
@@ -73,7 +74,9 @@ function App() {
       <Route path='/teacherreg' element={<TeacherRegister/>}/>
       <Route path='/registersuccess' element={<RegSuccess/>}/>
       <Route path='/teacherdashboard' element={<TeacherDashboard/>}/>
-      <Route path='/getallteacher' element={<GetTeacher/>}/>
+      {/* <Route path='/getallteacher' element={<GetTeacher/>}/> */}
+      <Route path='/resultdashboard' element={<ResultDashboard/>}/>
+      <Route path='/getallteacher' element={<TeacherDashboard/>}/>
     </Routes>
     {/* <SideBar/> */}
 {/* <TeacherManagement/> */}
